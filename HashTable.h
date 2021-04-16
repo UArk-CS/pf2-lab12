@@ -33,6 +33,7 @@ private:
     int Size;
     int *Value;
     int *Key;
+    int NumOfCollisions;
 };
 
 #endif //PF2_LAB12_HASHTABLE_H

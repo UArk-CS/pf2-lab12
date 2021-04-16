@@ -9,6 +9,7 @@ HashTable::HashTable(int size)
     Size = size;
     Value = new int[Size];
     Key = new int[Size];
+    NumOfCollisions = 0;
 
     for (int index=0; index < Size; index++)
     {
@@ -22,6 +23,7 @@ HashTable::HashTable(const HashTable & ht)
     Size = ht.Size;
     Value = new int[Size];
     Key = new int[Size];
+    NumOfCollisions = 0;
 
     for (int index=0; index < Size; index++)
     {
@@ -86,7 +88,12 @@ int HashTable::Hash(int key)
 
 int HashTable::Hash2(int index)
 {
+
+//    cout << "Collision handled" << endl;
+    NumOfCollisions++;
+
     return (index+1) % Size;
+
 }
 
 void HashTable::Print()
@@ -96,4 +103,7 @@ void HashTable::Print()
         cout << index << "\t"
              << Value[index] << "\t"
              << Key[index] << "\n";
+
+    cout << "Number of Collisions: " << NumOfCollisions << endl;
+
 }
