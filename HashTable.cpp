@@ -40,14 +40,21 @@ HashTable::~HashTable()
 
 bool HashTable::Insert(int key, int value)
 {
-    // Find desired key
-    int index = Hash(key);
-    while ((Key[index] != key) && (Key[index] != EMPTY))
-        index = Hash2(index);
 
-    // Insert value into hash table
-    Value[index] = value;
-    Key[index] = key;
+    if (Size > Insertion) {
+
+        // Find desired key
+        int index = Hash(key);
+        while ((Key[index] != key) && (Key[index] != EMPTY))
+            index = Hash2(index);
+
+        // Insert value into hash table
+        Value[index] = value;
+        Key[index] = key;
+        Insertion++;
+
+    }
+
     return true;
 }
 
